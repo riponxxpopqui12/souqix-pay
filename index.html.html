@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Souqix Pay</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, "Noto Sans Bengali", sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    background:linear-gradient(135deg,#f4f6f9,#e9edf3);
+    color:#15171c;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    background:#ffffff;
+    border-radius:28px;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+/* Header */
+
+.header{
+    text-align:center;
+}
+
+.logo{
+    width:62px;
+    height:62px;
+    margin:auto;
+    margin-bottom:12px;
+    border-radius:20px;
+    background:#111318;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.header h1{
+    font-size:27px;
+    margin-bottom:6px;
+}
+
+.header p{
+    color:#777d86;
+    font-size:14px;
+}
+
+/* Amount */
+
+.amount-box{
+    margin-top:25px;
+    padding:18px;
+    border-radius:18px;
+    background:#f5f6f8;
+    text-align:center;
+}
+
+.amount-label{
+    font-size:13px;
+    color:#777d86;
+    margin-bottom:6px;
+}
+
+.amount{
+    font-size:30px;
+    font-weight:bold;
+}
+
+/* Payment Card */
+
+.payment-card{
+    margin-top:16px;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    padding:18px;
+}
+
+.payment-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.payment-icon{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-weight:bold;
+    font-size:17px;
+}
+
+.bkash{
+    background:#e2136e;
+}
+
+.nagad{
+    background:#f58220;
+}
+
+.payment-name{
+    font-weight:bold;
+    font-size:16px;
+}
+
+.payment-type{
+    color:#858991;
+    font-size:12px;
+    margin-top:3px;
+}
+
+/* Number */
+
+.number-box{
+    margin-top:15px;
+    padding:11px 12px;
+    border-radius:13px;
+    background:#f7f7f8;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.number{
+    font-size:17px;
+    font-weight:bold;
+    letter-spacing:.5px;
+}
+
+.copy-btn{
+    border:none;
+    background:#17191f;
+    color:white;
+    padding:9px 13px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.copy-btn:hover{
+    opacity:.9;
+}
+
+.copied{
+    background:#168a58;
+}
+
+/* Steps */
+
+.steps{
+    margin-top:24px;
+}
+
+.steps h2{
+    font-size:17px;
+    margin-bottom:14px;
+}
+
+.step{
+    display:flex;
+    gap:11px;
+    margin:11px 0;
+    color:#5f646d;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.step-number{
+    min-width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#17191f;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* Warning */
+
+.warning{
+    margin-top:20px;
+    padding:14px;
+    border-radius:14px;
+    background:#fff8e8;
+    color:#735c18;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    margin-top:22px;
+    color:#999da5;
+    font-size:11px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div class="logo">S</div>
+
+        <h1>Souqix Pay</h1>
+
+        <p>tHe Souqix-এর পেমেন্ট পেজ</p>
+
+    </div>
+
+
+    <!-- Amount -->
+
+    <div class="amount-box">
+
+        <div class="amount-label">
+            পেমেন্টের পরিমাণ
+        </div>
+
+        <div class="amount" id="amount">
+            ৳ 0
+        </div>
+
+    </div>
+
+
+    <!-- bKash -->
+
+    <div class="payment-card">
+
+        <div class="payment-header">
+
+            <div class="payment-icon bkash">
+                bK
+            </div>
+
+            <div>
+
+                <div class="payment-name">
+                    bKash Personal
+                </div>
+
+                <div class="payment-type">
+                    Send Money
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="number-box">
+
+            <div class="number" id="bkash">
+                01309771853
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="copyNumber('bkash', this)">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Nagad -->
+
+    <div class="payment-card">
+
+        <div class="payment-header">
+
+            <div class="payment-icon nagad">
+                N
+            </div>
+
+            <div>
+
+                <div class="payment-name">
+                    Nagad Personal
+                </div>
+
+                <div class="payment-type">
+                    Send Money
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="number-box">
+
+            <div class="number" id="nagad">
+                01615865809
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="copyNumber('nagad', this)">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Instructions -->
+
+    <div class="steps">
+
+        <h2>
+            কীভাবে পেমেন্ট করবেন?
+        </h2>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <div>
+                আপনার পছন্দের bKash অথবা Nagad নম্বরটি Copy করুন।
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <div>
+                নিজের bKash/Nagad App থেকে নম্বরটিতে Send Money করুন।
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <div>
+                পেমেন্ট সম্পন্ন হলে Transaction ID সংরক্ষণ করুন।
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Warning -->
+
+    <div class="warning">
+
+        ⚠️ <b>সতর্কতা:</b>
+        আপনার bKash/Nagad PIN, OTP বা কোনো গোপন নিরাপত্তা কোড
+        কাউকে দেবেন না।
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        © 2026 tHe Souqix • Souqix Pay
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* Copy Number */
+
+function copyNumber(id, button){
+
+    const number =
+        document.getElementById(id).innerText;
+
+    navigator.clipboard.writeText(number).then(function(){
+
+        const oldText = button.innerText;
+
+        button.innerText = "✓ Copied";
+
+        button.classList.add("copied");
+
+        setTimeout(function(){
+
+            button.innerText = oldText;
+
+            button.classList.remove("copied");
+
+        },1500);
+
+    });
+
+}
+
+
+/* URL থেকে Amount নেওয়া */
+
+/*
+Example:
+
+souqix-pay.html?amount=850
+
+তাহলে page-এ দেখাবে:
+
+৳ 850
+*/
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const amount =
+    params.get("amount");
+
+if(amount){
+
+    document.getElementById("amount")
+    .innerText = "৳ " + amount;
+
+}
+
+</script>
+
+</body>
+</html>
